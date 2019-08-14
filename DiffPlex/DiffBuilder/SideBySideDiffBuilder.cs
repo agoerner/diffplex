@@ -90,8 +90,9 @@ namespace DiffPlex.DiffBuilder
                     for (; i < diffBlock.DeleteCountA; i++)
                     {
                         oldPieces.Add(new DiffPiece(diffResult.PiecesOld[i + diffBlock.DeleteStartA], ChangeType.Deleted, aPos + 1));
-                        newPieces.Add(new DiffPiece());
+                        newPieces.Add(new DiffPiece(null, ChangeType.Imaginary, aPos + 1));
                         aPos++;
+                        bPos++;
                     }
                 }
                 else
@@ -99,8 +100,9 @@ namespace DiffPlex.DiffBuilder
                     for (; i < diffBlock.InsertCountB; i++)
                     {
                         newPieces.Add(new DiffPiece(diffResult.PiecesNew[i + diffBlock.InsertStartB], ChangeType.Inserted, bPos + 1));
-                        oldPieces.Add(new DiffPiece());
+                        oldPieces.Add(new DiffPiece(null, ChangeType.Imaginary, bPos + 1));
                         bPos++;
+                        aPos++;
                     }
                 }
             }
